@@ -14,28 +14,33 @@ class Cell extends Component {
 
   }
 
-  handleClick = () => {
-    if (this.state.player === 0) {
-      if (this.props.turn === 1) {
+  handleClick = (e) => {
+    if (this.state.player == 0) {
+      if (this.props.turn == 1) {
         this.setState({
           image: <img src={X} className="squareIcon" alt="X" />,
           player: this.props.turn,
+          // value: 1
         }
         )
+
+        e.target.value = 1
       }
+
       else
         this.setState({
           image: <img src={O} className="squareIcon" alt="O" />,
           player: this.props.turn
         }
         )
-      this.props.updateBoard(this.props.id, this.props.turn);
       this.props.changeTurn(this.props.turn);
+      // console.log(this.props.changeTurn)
+      e.target.value = 1
     }
     else {
       alert("you can't play there");
     }
-
+    console.log(e.target.value)
   }
 
 

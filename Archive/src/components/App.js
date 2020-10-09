@@ -12,28 +12,9 @@ class Game extends Component {
       start: false,
       startGame: false,
       turn: 0,
-      playerX: "",
-      playerO: "",
-      reset: false,
-      isPlaying: false
-    }
-  }
-
-  newGame = () => {
-    this.setState({
       isPlaying: false,
-      start: false,
-      turn: 0,
-      playerX: "",
-      playerO: "",
-      reset: false
-    })
-  }
-
-  changeReset = (stateReset) => {
-    this.setState({
-      reset: stateReset
-    });
+      value: 0
+    }
   }
 
   changeStart = () => {
@@ -61,11 +42,11 @@ class Game extends Component {
       startGame: true,
       start: false,
     })
-    // console.log(this.state.turn)
+    console.log(this.state.turn)
     this.changeIsPlaying();
   }
   changeTurn = (turn) => {
-    if (turn === 1)
+    if (turn == 1)
       this.setState({
         turn: 2
       })
@@ -100,22 +81,29 @@ class Game extends Component {
           start={this.state.start}
           changeStart={this.changeStart}
         />
+
         <Info
           start={this.state.start}
           startGame={this.handleStartGame}
+
           setPlayerName={this.handleSetPlayerName.bind(this)}
+
+
+
         />
         <Board
           start={this.state.start}
           startGame={this.state.startGame}
           playerX_name={this.state.playerX_name}
           playerO_name={this.state.playerO_name}
-          isPlaying={this.state.isPlaying}
+
+          // value={this.state.value}
           turn={this.state.turn}
           changeTurn={this.changeTurn}
-          reset={this.state.reset}
-          changeReset={this.changeReset}
-          newGame={this.newGame} />
+
+        />
+
+
       </div>
     );
   }
